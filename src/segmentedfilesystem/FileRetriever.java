@@ -8,11 +8,10 @@ public class FileRetriever {
         public FileRetriever(String server, int port) {
         // Save the server and port for use in `downloadFiles()`
         //...
-        // (I'm not sure what this means)
-                downloadFiles(server, port);
+                
 	}
 
-	public void downloadFiles(String server, int port) {
+	public void downloadFiles() {
         // Do all the heavy lifting here.
         // This should
         //   * Connect to the server
@@ -25,7 +24,6 @@ public class FileRetriever {
         // PacketManager.allPacketsReceived() that you could
         // call for that, but there are a bunch of possible
         // ways.
-
                 DatagramSocket socket = new DatagramSocket();
                 byte[] sendBuf = new byte[1028];
                 InetAddress address = InetAddress.getByName(server);
@@ -38,8 +36,8 @@ public class FileRetriever {
                         packet = new DatagramPacket(buf, buf.length);
                         socket.receive(packet);
                         // Give packet to PacketManager.java
+                        PacketManager.recievePacket(packet);
                 }
                 socket.close();
 	}
-
 }
