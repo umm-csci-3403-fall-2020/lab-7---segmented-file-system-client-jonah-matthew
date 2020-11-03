@@ -1,22 +1,22 @@
 package segmentedfilesystem;
+
+import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-
-import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 
 public class FileRetriever {
         String retrievedServer;
         int retrievedPort;
 
         public FileRetriever(String server, int port) {
-        // Save the server and port for use in `downloadFiles()`
-        //...
+                // Save the server and port for use in `downloadFiles()`
+                // ...
                 retrievedServer = server;
                 retrievedPort = port;
-	}
+        }
 
-	public void downloadFiles() {
+        public void downloadFiles() throws IOException {
         // Do all the heavy lifting here.
         // This should
         //   * Connect to the server
@@ -37,12 +37,13 @@ public class FileRetriever {
                 DatagramPacket packet = new DatagramPacket(buf, buf.length, address, retrievedPort);
                 socket.send(packet);
         
-                while(/*loop until you have all the packets*/){
+                while(true){
                         packet = new DatagramPacket(buf, buf.length);
                         socket.receive(packet);
+
                         // Give packet to PacketManager.java
                         PacketManager.recievePacket(packet);
                 }
-                socket.close();
+                //socket.close();
 	}
 }
