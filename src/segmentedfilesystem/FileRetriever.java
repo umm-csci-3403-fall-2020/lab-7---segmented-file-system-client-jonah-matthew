@@ -3,12 +3,17 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
+
 public class FileRetriever {
+        String retrievedServer;
+        int retrievedPort;
 
         public FileRetriever(String server, int port) {
         // Save the server and port for use in `downloadFiles()`
         //...
-                
+                retrievedServer = server;
+                retrievedPort = port;
 	}
 
 	public void downloadFiles() {
