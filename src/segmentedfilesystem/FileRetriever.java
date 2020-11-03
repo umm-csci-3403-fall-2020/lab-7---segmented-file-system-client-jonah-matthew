@@ -31,10 +31,10 @@ public class FileRetriever {
         // ways.
                 DatagramSocket socket = new DatagramSocket();
                 byte[] sendBuf = new byte[1028];
-                InetAddress address = InetAddress.getByName(server);
+                InetAddress address = InetAddress.getByName(retrievedServer);
         
                 byte[] buf = new byte[1028];
-                DatagramPacket packet = new DatagramPacket(buf, buf.length, address, port);
+                DatagramPacket packet = new DatagramPacket(buf, buf.length, address, retrievedPort);
                 socket.send(packet);
         
                 while(/*loop until you have all the packets*/){
